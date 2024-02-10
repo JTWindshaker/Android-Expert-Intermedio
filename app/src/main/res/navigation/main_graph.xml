@@ -7,28 +7,28 @@
 
     <fragment
         android:id="@+id/horoscopeFragment"
-        android:name="com.practica.horoscapp.ui.home.horoscope.HoroscopeFragment"
+        android:name="com.practica.horoscapp.ui.horoscope.HoroscopeFragment"
         android:label="fragment_horoscope"
-        tools:layout="@layout/fragment_horoscope" >
+        tools:layout="@layout/fragment_horoscope">
         <action
             android:id="@+id/action_horoscopeFragment_to_horoscopeDetailActivity"
             app:destination="@id/horoscopeDetailActivity" />
     </fragment>
     <fragment
         android:id="@+id/luckFragment"
-        android:name="com.practica.horoscapp.ui.home.luck.LuckFragment"
+        android:name="com.practica.horoscapp.ui.luck.LuckFragment"
         android:label="fragment_luck"
         tools:layout="@layout/fragment_luck" />
     <fragment
         android:id="@+id/palmistryFragment"
-        android:name="com.practica.horoscapp.ui.home.palmistry.PalmistryFragment"
+        android:name="com.practica.horoscapp.ui.palmistry.PalmistryFragment"
         android:label="fragment_palmistry"
         tools:layout="@layout/fragment_palmistry" />
     <activity
         android:id="@+id/horoscopeDetailActivity"
-        android:name="com.practica.horoscapp.ui.home.detail.HoroscopeDetailActivity"
+        android:name="com.practica.horoscapp.ui.detail.HoroscopeDetailActivity"
         android:label="activity_horoscope_detail"
-        tools:layout="@layout/activity_horoscope_detail" >
+        tools:layout="@layout/activity_horoscope_detail">
         <argument
             android:name="type"
             app:argType="com.practica.horoscapp.domain.model.HoroscopeModel" />
