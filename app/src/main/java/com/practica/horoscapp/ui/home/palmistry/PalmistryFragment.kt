@@ -6,11 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.practica.horoscapp.databinding.FragmentPalmistryBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * Fragment: Vista reutilizable. Al crear un fragment blank, se recomienda limpiarlo y dejar los dos métodos que vienen por defecto.
  * El método principal es onCreateView... Se recomienda solo configurar este método
+ * La anotación @AndroidEntryPoint permite que cada activity pueda inyectar y ser inyectada
  */
+@AndroidEntryPoint
 class PalmistryFragment : Fragment() {
     /**
      * El binding de los fragment es diferente.

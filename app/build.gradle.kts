@@ -1,6 +1,13 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+
+    //Plugins requeridos para que funcione daggerHilt
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
+
+    //Plugín requerido para Safeargs
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -17,13 +24,26 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    /**
+     * buildTypes: Sirven para generar distintos ambientes en la aplicación. Se requiere de buildConfig = true en buildFeatures para que funcione.
+     * Se pueden configurar las variables de entorno.
+     */
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
+            isDebuggable = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            resValue("string", "appNameConfig", "HoroscApp")
+            buildConfigField("String", "BASE_URL", "\"https://newastro.vercel.app/\"")
+        }
+
+        getByName("debug") {
+            isDebuggable = true
+            resValue("string", "appNameConfig", "[DEBUG] HoroscApp")
+            buildConfigField("String", "BASE_URL", "\"https://newastro-debug.vercel.app/\"")
         }
     }
     compileOptions {
@@ -37,7 +57,13 @@ android {
     //viewBinding
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
+
+    //Se agrega si hay error en la jvm a la hora de crear el proyecto
+    //    kotlin{
+    //        jvmToolchain(8)
+    //    }
 }
 
 dependencies {
@@ -47,6 +73,33 @@ dependencies {
     val navVersion = "2.7.6"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+
+    /**
+     * DaggerHilt(Herramienta para inyección de dependencia): automatiza y simplifica la gestión de dependencia.
+     * kapt: proveedor que nos permite autogenerar código. DaggerHilt funciona creando clases ocultas para realizar la inyección.
+     * para que kapt funcione, tenemos que ir al build gradle del proyecto e implementar la línea que allá está.
+     * La versión debe ser la misma que la variable acá definida
+     */
+    val daggerHiltVersion = "2.48"
+    implementation("com.google.dagger:hilt-android:$daggerHiltVersion")
+    kapt("com.google.dagger:hilt-compiler:$daggerHiltVersion")
+
+    /**
+     * Retrofit: Sirve para hacer llamadas API
+     */
+    val retrofitVersion = "2.9.0"
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+
+    /**
+     * Interceptor: Se encarga de obtener todos los resultados de las peticiones para poder manejarlas y gestionarlas
+     */
+    implementation("com.squareup.okhttp3:logging-interceptor:4.3.1")
+
+    /**
+     * Picaso: Sirve para trabajar con imagenes traídas de internet
+     */
+    implementation("com.squareup.picasso:picasso:2.8")
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

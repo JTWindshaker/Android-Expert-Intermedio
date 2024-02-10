@@ -7,7 +7,12 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.practica.horoscapp.R
 import com.practica.horoscapp.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * La anotación @AndroidEntryPoint permite que cada activity pueda inyectar y ser inyectada
+ */
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     /**
      * Se inicializa el binding de la vista.
