@@ -21,7 +21,15 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        /**
+         * Se usa cuando no se usa daggerHilt para test
+         */
+        //testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        /**
+         * Cuando se usa daggerHilt para test, se debe usar eel siguiente testInstrumentationRunner
+         */
+        testInstrumentationRunner = "com.practica.horoscapp.CustomTestRunner"
     }
 
     /**
@@ -121,6 +129,14 @@ dependencies {
     testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
     testImplementation("io.mockk:mockk:1.12.3")
 
+    //UI Testing
+    val espressoVersion = "3.5.1"
+    val daggerHiltTestVersion = "2.48"
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("androidx.test.espresso:espresso-core:${espressoVersion}")
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:${espressoVersion}")
+    androidTestImplementation("androidx.test.espresso:espresso-intents:${espressoVersion}")
+    androidTestImplementation("androidx.fragment:fragment-testing:1.6.2")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:${daggerHiltTestVersion}")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:${daggerHiltTestVersion}")
 }

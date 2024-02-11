@@ -5,6 +5,15 @@
       <entry key="app">
         <State />
       </entry>
+      <entry key="test()">
+        <State />
+      </entry>
+      <entry key="when_horoscope_is_selected_then_open_detail()">
+        <State />
+      </entry>
+      <entry key="when_mainactivity_is_created_then_open_luck_fragment()">
+        <State />
+      </entry>
     </value>
   </component>
 </project>
