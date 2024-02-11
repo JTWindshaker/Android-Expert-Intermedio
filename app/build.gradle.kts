@@ -70,9 +70,9 @@ dependencies {
     /**
      * NavComponent: Ambas dependencias requieren la misma versión, se recomienda crear un value que controle la integridad de esta regla
      */
-    val navVersion = "2.7.6"
-    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
-    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+    val navVersion = "2.7.7"
+    implementation("androidx.navigation:navigation-fragment-ktx:${navVersion}")
+    implementation("androidx.navigation:navigation-ui-ktx:${navVersion}")
 
     /**
      * DaggerHilt(Herramienta para inyección de dependencia): automatiza y simplifica la gestión de dependencia.
@@ -81,15 +81,15 @@ dependencies {
      * La versión debe ser la misma que la variable acá definida
      */
     val daggerHiltVersion = "2.48"
-    implementation("com.google.dagger:hilt-android:$daggerHiltVersion")
-    kapt("com.google.dagger:hilt-compiler:$daggerHiltVersion")
+    implementation("com.google.dagger:hilt-android:${daggerHiltVersion}")
+    kapt("com.google.dagger:hilt-compiler:${daggerHiltVersion}")
 
     /**
      * Retrofit: Sirve para hacer llamadas API
      */
     val retrofitVersion = "2.9.0"
-    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
-    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    implementation("com.squareup.retrofit2:retrofit:${retrofitVersion}")
+    implementation("com.squareup.retrofit2:converter-gson:${retrofitVersion}")
 
     /**
      * Interceptor: Se encarga de obtener todos los resultados de las peticiones para poder manejarlas y gestionarlas
@@ -100,6 +100,16 @@ dependencies {
      * Picaso: Sirve para trabajar con imagenes traídas de internet
      */
     implementation("com.squareup.picasso:picasso:2.8")
+
+    /**
+     * Camera x
+     */
+    val cameraVersion = "1.3.1"
+    implementation("androidx.camera:camera-core:${cameraVersion}")
+    implementation("androidx.camera:camera-camera2:${cameraVersion}")
+    implementation("androidx.camera:camera-lifecycle:${cameraVersion}")
+    implementation("androidx.camera:camera-view:${cameraVersion}")
+    implementation("androidx.camera:camera-extensions:${cameraVersion}")
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
